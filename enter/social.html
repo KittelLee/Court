@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <!--문자인코딩방식 명시-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!--윈도우10이하버전 최신엔진으로 페이지 렌더링-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta name="description" content="파주시법원 홈페이지 입니다." /> <!--사이트설명-->
+    <meta name="author" content="이진욱" /> <!--사이트 저작자-->
+    <title>사회복무요원 가이드</title>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../css/social.css" />
+    <link rel="shortcut icon" href="../img/fav.ico"> 
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/toggle.min.js"></script>
+  </head>
+<body>
+  <div id="wrap">
+    <section class="info_clock"> <!--Information clock part-->
+      <h2 id="clock">00:00</h2>
+    </section>
+
+    <header class="header"> <!--Header part-->
+      <h1 class="logo">
+        <a href="../index.html"><img src="../img/court.png"></a>
+      </h1>
+      <nav class="nav">
+        <ul class="navbar">
+          <li><a href="../menu/basic.html">전화&접수가이드</a></li>
+          <li><a href="../menu/guide.html">서식접수가이드</a></li>
+          <li><a href="../menu/code.html">사건검색코드</a></li>
+          <li><a href="../menu/edu.html">자녀교육준비</a></li>
+          <li><a href="../menu/seat.html">자리배치도</a></li>
+          <li><a href="../menu/work.html">담당자 담당업무</a></li>
+        </ul>
+      </nav>
+      <span class="menu_toggle_btn">전체 메뉴 토글 버튼</span>
+    </header>
+
+    <section class="main_header_section"> <!--Main header part-->
+      <h2>사회복무요원 가이드</h2>
+      <ul class="sub_list">
+        <li><a href="../menu/enter.html">뒤로가기 /</a></li>
+        <li><a href="social.html">사회복무요원 가이드</a></li>
+      </ul>
+    </section>
+
+    <section class="content_section"> <!--content part-->
+      <marquee behavior="scroll" direction="left" scrolldelay="10">※우리 사회복무요원은&nbsp;&nbsp;<b style="color: red;">「개인정보보호법」</b>&nbsp;에 따라 개인정보 보호 및 권익을 보호하고 개인정보와 관련한 정보를 유출 및 유포 하지않겠습니다※</marquee>
+      <button class="accordion">사회복무요원이 지켜야 할 사항들</button>
+      <div class="panel">
+        <p style="color: red">1. 법원에서 다루는 개인정보는 유출 및 유포 하지 않는다.</p>
+        <p style="color: red;">2. 법원에 있는 모든 물품은 개인적인 목적으로 사용하지 말고 판매하지도 않는다.</p>
+      </div>
+
+      <button class="accordion">요일별 할일, 평소에 할일</button>
+      <div class="panel">
+        <p>월요일 : 협이이혼확인기일 안내문 만들기, 민원서식함 부족한 서류 채우기</p>
+        <p>화요일 : 협의이혼신분확인, 자녀양육교육[화]준비</p>
+        <p>수요일 : 자녀양육교육[수]준비</p>
+        <p>목요일 : 협의이혼사건취하간주 처리</p>
+        <p>금요일 : 식물에 물주기, 민원서식채우기, 확인기일미리잡기</p>
+        <br>
+        <p>평소에 할일 : 프린터기(복사기) 종이 채우기(원장님방 포함), 원장님방 연필깍기</p>
+        <p>퇴근하기전에 할일 : 4층 불끄기, 법정+조정실 정리하기, 원장님방 물빼기, 커피기계 정리</p>
+      </div>
+
+      <button class="accordion">자료들 (원하는 자료를 클릭해서 다운로드)</button>
+      <div class="panel">
+        <p><a href="../chest/social/a_2021 인수인계.hwp" download>인수인계</a></p>
+        <p><a href="../chest/social/b_2021.01.01 자리배치도.hwp" download>자리배치도</a></p>
+        <p><a href="../chest/social/c_전화번호서식.hwp" download>전화번호서식</a></p>
+        <p><a href="../chest/social/d_안내문양식.ppt" download>안내문양식</a></p>
+        <p><a href="../chest/social/e_서식함 명패.hwp" download>서식함 명패</a></p>
+        <p><a href="../chest/social/f_표지 장식들.hwp" download>표지 장식들</a></p>
+        <p><a href="../chest/social/g_파주시법원라벨.docx" download>파주시법원라벨</a></p>
+      </div>
+    </section>
+
+    <footer class="footer"> <!--footer part-->
+      <p>
+        COPYRIGHT &copy; 2020 <a id="hidden" onclick="alert('개발자 이진욱이 만든 웹사이트 입니다.')">DEV JINUK</a>&nbsp;&nbsp&nbsp;ALL RIGHTS RESERVED
+      </p>
+    </footer>
+    
+  </div>
+
+  <script> /*clock*/
+    const newTime = document.getElementById("clock");
+    
+    function watch() {
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const nowdate = date.getDate();
+      const day =  date.getDay();
+      const week = ['일', '월', '화', '수', '목', '금', '토'];
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = date.getSeconds();
+           
+      newTime.innerHTML = year + "년 " + addzero(month + 1) + "월 " + addzero(nowdate) + "일 " + week[day] + "요일 " + addzero(hours) + "시 " + addzero(minutes) + "분 ";
+    }
+
+    function addzero(num) {
+      if(num < 10) {
+        num = "0" + num;
+      }
+      return num;
+    }
+
+    function init() {
+      watch();
+      setInterval(watch, 1000);
+    }
+
+    init();
+    </script>
+
+    <script> /*Accordion*/
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+    
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+        
+          var panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
+    </script>
+</body>
+</html>

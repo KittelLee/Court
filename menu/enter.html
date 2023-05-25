@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <!--문자인코딩방식 명시-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!--윈도우10이하버전 최신엔진으로 페이지 렌더링-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta name="description" content="파주시법원 홈페이지 입니다." /> <!--사이트설명-->
+    <meta name="author" content="이진욱" /> <!--사이트 저작자-->
+    <title>편의기능</title>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href=../css/enter.css />
+    <link rel="shortcut icon" href="../img/fav.ico">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/toggle.min.js"></script>
+  </head>
+<body>
+  <div id="wrap">
+    <section class="info_clock"> <!--Information clock part-->
+      <h2 id="clock">00:00</h2>
+    </section>
+
+    <header class="header"> <!--Header part-->
+      <h1 class="logo">
+        <a href="../index.html"><img src="../img/court.png"></a>
+      </h1>
+      <nav class="nav">
+        <ul class="navbar">
+          <li><a href="basic.html">전화&접수가이드</a></li>
+          <li><a href="guide.html">서식접수가이드</a></li>
+          <li><a href="code.html">사건검색코드</a></li>
+          <li><a href="edu.html">자녀교육준비</a></li>
+          <li><a href="seat.html">자리배치도</a></li>
+          <li><a href="work.html">담당자 담당업무</a></li>
+        </ul>
+      </nav>
+      <span class="menu_toggle_btn">전체 메뉴 토글 버튼</span>
+    </header>
+
+    <section class="main_header_section"> <!--Main header part-->
+      <h2>편의기능</h2>
+      <ul class="sub_list">
+        <li><a href="../index.html">홈 /</a></li>
+        <li><a href="enter.html">편의기능</a></li>
+      </ul>
+    </section>
+
+    <section class="content_section"> <!--content part-->
+        <ul class="service_list">
+            <li><a href="../enter/song.html"><div class="info"><h3>송달료 계산기</h3><span>송달료 계산기 입니다.</span></div><img src="../img/enter1.jpg"></a></li>
+            <li><a href="../enter/todo.html"><div class="info"><h3>오늘해야할일</h3><span>오늘 해야할일을 기입해보세요.</span></div><img src="../img/enter2.jpg" alt=""></a></li>
+            <li><a href="../enter/legal.html"><div class="info"><h3>법률지식</h3><span>법률지식을 저장하는 곳입니다.</span></div><img src="../img/enter3.png" alt=""></a></li>
+            <li><a href="../enter/social.html"><div class="info"><h3>사회복무요원가이드</h3><span>파주시법원 사회복무요원 가이드 입니다.</span></div><img src="../img/enter4.png" alt=""></a></li>
+        </ul>
+    </section>
+
+    <footer class="footer"> <!--footer part-->
+      <p>
+        COPYRIGHT &copy; 2020 <a id="hidden" onclick="alert('개발자 이진욱이 만든 웹사이트 입니다.')">DEV JINUK</a>&nbsp;&nbsp&nbsp;ALL RIGHTS RESERVED
+      </p>
+    </footer>
+
+  </div>
+
+  <script> /*clock*/
+    const newTime = document.getElementById("clock");
+    
+    function watch() {
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const nowdate = date.getDate();
+      const day =  date.getDay();
+      const week = ['일', '월', '화', '수', '목', '금', '토'];
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = date.getSeconds();
+           
+      newTime.innerHTML = year + "년 " + addzero(month + 1) + "월 " + addzero(nowdate) + "일 " + week[day] + "요일 " + addzero(hours) + "시 " + addzero(minutes) + "분 ";
+    }
+
+    function addzero(num) {
+      if(num < 10) {
+        num = "0" + num;
+      }
+      return num;
+    }
+
+    function init() {
+      watch();
+      setInterval(watch, 1000);
+    }
+
+    init();
+    </script>
+</body>
+</html>

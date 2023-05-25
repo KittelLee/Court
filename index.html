@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <!--문자인코딩방식 명시-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!--윈도우10이하버전 최신엔진으로 페이지 렌더링-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta name="description" content="파주시법원 홈페이지 입니다." /> <!--사이트설명-->
+    <meta name="author" content="이진욱" /> <!--사이트 저작자-->
+    <title>파주시법원</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/ui.css" /> <!--일단 비움-->
+    <link rel="shortcut icon" href="img/fav.ico"> <!--상단타이틀옆로고-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/toggle.min.js"></script>
+  </head>
+<body>
+    <div id="wrap"> <!--wrap start-->
+
+      <section class="info_clock"> <!--Information clock part-->
+        <h2 id="clock">00:00</h2>
+      </section>
+
+      <header class="header"> <!--Header part-->
+        <h1 class="logo">
+          <a href="index.html"><img src="img/court.png"></a>
+        </h1>
+        <nav class="nav">
+          <ul class="navbar">
+            <li><a href="menu/basic.html">전화&접수가이드</a></li>
+            <li><a href="menu/guide.html">서식접수가이드</a></li>
+            <li><a href="menu/code.html">사건검색코드</a></li>
+            <li><a href="menu/edu.html">자녀교육준비</a></li>
+            <li><a href="menu/seat.html">자리배치도</a></li>
+            <li><a href="menu/work.html">담당자 담당업무</a></li>
+          </ul>
+        </nav>
+        <span class="menu_toggle_btn">전체 메뉴 토글 버튼</span>
+      </header>
+      
+      <section class="slide-section"> <!--Slide part-->
+        <div class="mySlides fade">
+          <img src="img/law1.jpg" />
+        </div>
+        <div class="mySlides fade">
+          <img src="img/law2.jpg" />
+        </div>
+        <div class="mySlides fade">
+          <img src="img/law3.jpg" />
+        </div>
+        <div class="mySlides fade">
+          <img src="img/law4.jpg" />
+        </div>
+        <div class="mySlides fade">
+          <img src="img/law5.jpg" />
+        </div>
+      </section>
+
+      <section class="schedule"> <!--schedule part-->
+        <div class="faster">
+          <h2 class="fastcall">담당자 빠른전화</h2>
+          <ul class="fastlist">
+            <li><a onclick="alert('김지수 실무관님\n[제증명]\n031-8071-9207')">보존계/제증명</a></li>
+            <li><a onclick="alert('김지수 실무관님, 김종욱계장님\n[접수, 협의이혼]\n031-8071-9210~9213')">접수계</a></li>
+            <li><a onclick="alert('임정환 계장님\n[이행권고]\n031-8071-9209')">이행권고</a></li>
+            <li><a onclick="alert('황규연 계장님\n[독촉계, 지급명령]\n031-8071-9208')">지급명령</a></li>
+            <li><a onclick="alert('윤수정 실무관님\n[민사소액]\n031-8071-9204')">민사소액</a></li>
+            <li><a onclick="alert('강영목 실무관님\n[가압류, 민사신청]\n031-8071-9205')">민사신청</a></li>
+            <li><a onclick="alert('박종호 실무관님\n[사송, 협의이혼]\n031-8071-9206')">협의이혼</a></li>
+            <li><a onclick="alert('임부현 계장님\n[공탁, 재판참여]\n031-8071-9203')">공탁</a></li>
+          </ul>
+        </div>  
+      </section>
+
+      <section class="number_form"> <!--number_form part-->
+        <h2 class="title">서식함 서식번호</h2>
+        <div class="output_wrap">
+          <input type="text" id="yangsik" onkeyup="numFunction()" placeholder="양식명을 입력하세요.">
+
+          <ul id="all_yangsik">
+            <li><a href="chest/divorce/j_요령안내&양육협의서.hwp">양육협의서</a></li>
+            <li><a href="chest/petty/b_이의신청서.hwp">1. 이의신청서</a></li>
+            <li><a href="chest/petty/a_소장.hwp">2. 소장</a></li>
+            <li><a href="chest/public_pp/a_위임장.hwp">3. 위임장</a></li>
+            <li><a href="chest/public_pp/b_당사자표시정정신청서.hwp">4. 당사자표시정정</a></li>
+            <li><a href="chest/public_pp/d_주소보정서.hwp">5. 주소보정서</a></li>
+            <li><a href="chest/public_pp/e_준비서면.hwp">6. 준비서면</a></li>
+            <li><a href="chest/petty/c_소송대리허가신청 및 위임장.hwp">7. 소송대리허가신청 및 소송위임장</a></li>
+            <li><a href="chest/petty/d_기일변경신청서.hwp">8. 기일변경신청서</a></li>
+            <li><a href="chest/petty/e_사실조회신청서.hwp">9. 사실조회신청</a></li>
+            <li><a href="chest/petty/f_문서송부촉탁신청서.hwp">10. 문서송부촉탁신청서</a></li>
+            <li><a href="chest/payment/b_지급명령에 대한 이의신청서.hwp">11. 지급명령에 대한 이의신청서</a></li>
+            <li><a href="chest/payment/a_지급명령신청서.hwp">12. 지급명령신청서</a></li>
+            <li><a href="chest/public_pp/c_보정서.hwp">13. 보정서</a></li>
+            <li><a href="chest/petty/g_증인신청서.hwp">14. 증인신청서</a></li>
+            <li><a href="chest/public_pp/f_송달장소와 송달영수인 선정신고.hwp">15. 송달장소와 송달영수인 선정신고</a></li>
+            <li><a href="chest/petty/h_답변서.hwp">16. 답변서</a></li>
+            <li><a href="chest/petty/i_항소장.hwp">17. 항소장</a></li>
+            <li><a href="chest/petty/j_기일지정신청서.hwp">18. 기일지정신청서</a></li>
+            <li><a href="chest/application/a_부동산가압류신청서.hwp">19. 부동산가압류신청서</a></li>
+            <li><a href="chest/application/b_채권가압류신청서.hwp">20. 채권가압류신청서</a></li>
+            <li><a href="chest/application/c_유체동산가압류신청서.hwp">21. 유체동산가압류신청서</a></li>
+            <li><a href="chest/application/e_가압류신청진술서.hwp">22. 가압류신청 진술서</a></li>
+            <li><a href="chest/public_pp/g_참고자료제출.hwp">23. 참고자료제출</a></li>
+            <li><a href="chest/application/l_가압류 신청 취하 및 집행해제신청서.hwp">24. 가압류 신청 취하 및 집행해제신청서</a></li>
+            <li><a href="chest/petty/k_청구취지 및 청구원인변경 신청서.hwp">25. 청구취지 및 청구원인변경</a></li>
+            <li><a href="chest/public_pp/h_취하서.hwp">26. 취하서</a></li>
+            <li><a href="chest/application/n_강제집행정지결정 신청서.hwp">27. 강제집행정지결정 신청서</a></li>
+            <li><a href="chest/proof/e_증명원.hwp">28. 증명원</a></li>
+            <li><a href="#">29. 부동산가압류작성안내</a></li>
+            <li><a href="#">30. 채권가압류작성안내</a></li>
+            <li><a href="chest/application/d_주택임차권등기명령신청서.hwp">31. 주택임차권등기명령 신청서</a></li>
+            <li><a href="chest/application/o_제소명령신청서.hwp">32. 제소명령 신청서</a></li>
+            <li><a href="chest/application/g_가압류집행취소신청(해방공탁).hwp">33. 부동산가압류 집행취소 신청서</a></li>
+            <li><a href="chest/application/h_개인회생에 의한 집행해제신청서.hwp">34. 가압류집행해제 신청서</a></li>
+            <li><a href="chest/application/i_권리행사최고에 의한 담보취소신청서.hwp">35. 권리행사최고에 의한 담보취소 신청</a></li>
+            <li><a href="chest/application/j_동의에 의한 담보취소신청서.hwp">36. 동의에 의한 담보취소 신청</a></li>
+            <li><a href="chest/gongtak/a_금전 공탁서(재판상의 보증).hwp">37. 금전(재판상보증)공탁</a></li>
+            <li><a href="chest/proof/c_분실사유서.hwp">38. 분실사유서</a></li>
+            <li><a href="chest/proof/b_집행문재도부여.hwp">39. 집행문(재도/수통)부여신청서</a></li>
+            <li><a href="chest/application/p_판결(결정)경정결정신청.hwp">40. 판결(결정)경정결정신청</a></li>
+            <li><a href="chest/application/d_1임차권등기명령안내문.hwp">41. 주택임차권등기명령안내문</a></li>
+            <li><a href="chest/proof/d_재판기록 열람&복사.hwp">42. 재판기록 열람&복사 신청서</a></li>
+            <li><a href="chest/application/m_임차권등기취하 및 해제신청서.hwp">43. 임차권등기취하 및 해제신청서</a></li>
+            <li><a href="chest/gongtak/b_금전 공탁서(가압류해방).hwp">44. 가압류해방공탁</a></li>
+            <li><a href="chest/application/k_사유소멸에 의한 담보취소신청.hwp">45. 사유소멸에 의한 담보취소 신청</a></li>
+            <li><a href="chest/application/f_부제소진술서.hwp">46. 부제소진술서</a></li>
+            <li><a href="chest/gongtak/c_공탁금 출급_회수 청구서.hwp">47. 공탁금 출급&회수 청구서</a></li>
+            <li><a href="#">48. 유체동산가압류안내문</a></li>
+            <li><a href="chest/proof/f_소제기증명원.hwp">49. 소제기증명원</a></li>
+            <li><a href="chest/petty/l_문서제출명령신청서.hwp">50. 문서제출명령신청서</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="quick_form"> <!--quick_form part-->
+        <h2 class="title">바로가기</h2>
+        <ul class="quick_form_list">
+          <li><a href="https://www.scourt.go.kr" target="_blank">대한민국법원</a></li>
+          <li><a href="https://glaw.scourt.go.kr" target="_blank">종합법률정보</a></li>
+          <li><a href="https://www.scourt.go.kr/portal/main.jsp" target="_blank">대국민서비스</a></li>
+          <li><a href="https://www.juso.go.kr" target="_blank">도로명주소안내시스템</a></li>
+        </ul>
+      </section>
+
+      <section class="banner_section"> <!--memo part & patch part-->
+        <div class="banner_box_1">
+          <a href="menu/memo.html" target="_blank"><img src="img/Notepad.png"></a>
+        </div>
+        <div class="banner_box_2">
+          <a href="menu/patch.html"><img src="img/patch.png"></a>
+        </div>
+      </section>
+
+      <section class="convenient_section"> <!--convenient part-->
+        <ul class="convenient_list">
+          <li><a href="menu/call.html"><img src="img/call.jpg"></a></li>
+          <li><a href="menu/chest.html"><img src="img/seru.jpg"></a></li>
+          <li><a href="menu/enter.html"><img src="img/add.png"></a></li>
+        </ul>
+      </section>
+
+      <footer class="footer"> <!--footer part-->
+        <p>
+          <a id="hidden">COPYRIGHT &copy; 2020 DEV JINUK &nbsp; ALL RIGHTS RESERVED
+            </a>&nbsp;&nbsp;<strong>Ver 3.8.2</strong>
+        </p>
+      </footer>
+
+      <div id="wrap_Modal" class="modal">
+          <div class="modal_Content">
+              <span class="close">&times;</span>
+              <p id="modal_Style">
+                  COPYRIGHT &copy; 2020 DEV JINUK &nbsp; ALL RIGHTS RESERVED<br>
+                  개발자 이진욱이 만든 웹사이트 입니다.<br>
+                  2020~2021 사회복무요원 이진욱 [010-7900-9652]<br>
+                  <br>
+                  <span style="color: red;">※사이트 유지보수가 필요한 경우 비용을 지불하시면 해드립니다.</span>
+              </p>
+          </div>
+      </div>
+    </div> <!--wrap end-->
+    
+    <script> /*clock*/
+    const newTime = document.getElementById("clock");
+    
+    function watch() {
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const nowdate = date.getDate();
+      const day =  date.getDay();
+      const week = ['일', '월', '화', '수', '목', '금', '토'];
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = date.getSeconds();
+           
+      newTime.innerHTML = year + "년 " + addzero(month + 1) + "월 " + addzero(nowdate) + "일 " + week[day] + "요일 " + addzero(hours) + "시 " + addzero(minutes) + "분 ";
+    }
+
+    function addzero(num) {
+      if(num < 10) {
+        num = "0" + num;
+      }
+      return num;
+    }
+
+    function init() {
+      watch();
+      setInterval(watch, 1000);
+    }
+
+    init();
+    </script>
+
+    <script> /*Slideshow*/
+      var slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 5100);
+      }
+    </script>
+
+    <script> /*form number*/
+      function numFunction() {
+        let input, filter, ul, li, a, i; 
+        input = document.getElementById("yangsik");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("all_yangsik");
+        li = ul.getElementsByTagName("li");
+
+        for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0];
+          if(!filter.trim()){
+            li[i].style.display = "none";
+            continue;
+          }
+          if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "list-item";
+          } else {
+            li[i].style.display = "none";
+          }
+        }
+      } 
+    </script>
+
+    <script> /*modal*/
+        const modal = document.getElementById('wrap_Modal');
+
+        const btn = document.getElementById('hidden');
+
+        const span = document.getElementsByClassName('close')[0];
+
+        btn.onclick = function() {
+            modal.style.display = 'block';
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

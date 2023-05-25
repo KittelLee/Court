@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <!--문자인코딩방식 명시-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!--윈도우10이하버전 최신엔진으로 페이지 렌더링-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta name="description" content="파주시법원 홈페이지 입니다." /> <!--사이트설명-->
+    <meta name="author" content="이진욱" /> <!--사이트 저작자-->
+    <title>송달료 계산기</title>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../css/song.css" />
+    <link rel="shortcut icon" href="../img/fav.ico"> 
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/toggle.min.js"></script>
+  </head>
+<body>
+  <div id="wrap">
+    <section class="info_clock"> <!--Information clock part-->
+      <h2 id="clock">00:00</h2>
+    </section>
+
+    <header class="header"> <!--Header part-->
+      <h1 class="logo">
+        <a href="../index.html"><img src="../img/court.png"></a>
+      </h1>
+      <nav class="nav">
+        <ul class="navbar">
+          <li><a href="../menu/basic.html">전화&접수가이드</a></li>
+          <li><a href="../menu/guide.html">서식접수가이드</a></li>
+          <li><a href="../menu/code.html">사건검색코드</a></li>
+          <li><a href="../menu/edu.html">자녀교육준비</a></li>
+          <li><a href="../menu/seat.html">자리배치도</a></li>
+          <li><a href="../menu/work.html">담당자 담당업무</a></li>
+        </ul>
+      </nav>
+      <span class="menu_toggle_btn">전체 메뉴 토글 버튼</span>
+    </header>
+
+    <section class="main_header_section"> <!--Main header part-->
+      <h2>송달료 계산기</h2>
+      <ul class="sub_list">
+        <li><a href="../menu/enter.html">뒤로가기 /</a></li>
+        <li><a href="song.html">송달료 계산기</a></li>
+      </ul>
+    </section>
+
+    <section class="content_section"> <!--content part-->
+      <h1>송달료 계산</h1><br>
+      <div class="songdal_wrap" style="display: flex;">
+        <h2>당사자 수</h2>
+        <input id="songdal_push" type="text" placeholder="&nbsp;원고 수 + 피고 수" onkeydown="songdal_Event()">
+        <button id="songdal_btn">계산</button>
+        <p>입력한 당사자 수 : <b id="before">n명</b></p>
+      </div>
+      <br>
+      <table border="1">
+        <tr>
+          <td>소장&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[민사1심]</td>
+          <td id="songdal_so">원</td> 
+        </tr>
+        <tr>
+          <td>반소장&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[민사1심]</td>
+          <td id="songdal_banso">원</td> 
+        </tr>
+        <tr>
+          <td>항소장&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[민사2심]</td>
+          <td id="songdal_hangso">원</td>
+        </tr>
+        <tr>
+          <td>지급명령&nbsp;&nbsp;[독촉]</td>
+          <td id="songdal_jigup">원</td>
+        </tr>
+      </table>
+    </section>
+
+    <footer class="footer"> <!--footer part-->
+      <p>
+        COPYRIGHT &copy; 2020 <a id="hidden" onclick="alert('개발자 이진욱이 만든 웹사이트 입니다.')">DEV JINUK</a>&nbsp;&nbsp&nbsp;ALL RIGHTS RESERVED
+      </p>
+    </footer>
+    
+  </div>
+
+  <script> /*clock*/
+    const newTime = document.getElementById("clock");
+    
+    function watch() {
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const nowdate = date.getDate();
+      const day =  date.getDay();
+      const week = ['일', '월', '화', '수', '목', '금', '토'];
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = date.getSeconds();
+           
+      newTime.innerHTML = year + "년 " + addzero(month + 1) + "월 " + addzero(nowdate) + "일 " + week[day] + "요일 " + addzero(hours) + "시 " + addzero(minutes) + "분 ";
+    }
+
+    function addzero(num) {
+      if(num < 10) {
+        num = "0" + num;
+      }
+      return num;
+    }
+
+    function init() {
+      watch();
+      setInterval(watch, 1000);
+    }
+
+    init();
+    </script>
+
+    <script> /*songdal calc click*/
+      document.querySelector('#songdal_btn').addEventListener('click', () => {
+        const songdal_push = document.querySelector('#songdal_push');
+
+        const songdal_sojang = document.querySelector('#songdal_so');
+        const songdal_banso = document.querySelector('#songdal_banso');
+        const songdal_hangso = document.querySelector('#songdal_hangso');
+        const songdal_jigup = document.querySelector('#songdal_jigup');
+      
+
+        function addComma(num) {
+          const com =  /\B(?=(\d{3})+(?!\d))/g;
+          return num.toString().replace(com, ',');
+        }
+
+        songdal_sojang.innerHTML = addComma(songdal_push.value * 51000) + '원';
+        songdal_banso.innerHTML = addComma(songdal_push.value * 51000) + '원';
+        songdal_hangso.innerHTML = addComma(songdal_push.value * 61200) + '원';
+        songdal_jigup.innerHTML = addComma(songdal_push.value * 30600) + '원';
+
+        const before = document.querySelector('#before');
+
+        before.innerHTML = songdal_push.value + '명';
+        songdal_push.value = '';
+      });
+
+      /*songdal calc enter*/
+      function songdal_Event() {
+        if(event.keyCode == 13) {
+          const songdal_push = document.querySelector('#songdal_push');
+
+          const songdal_sojang = document.querySelector('#songdal_so');
+          const songdal_banso = document.querySelector('#songdal_banso');
+          const songdal_hangso = document.querySelector('#songdal_hangso');
+          const songdal_jigup = document.querySelector('#songdal_jigup');
+          
+
+          function addComma(num) {
+            const com =  /\B(?=(\d{3})+(?!\d))/g;
+            return num.toString().replace(com, ',');
+          }
+
+          songdal_sojang.innerHTML = addComma(songdal_push.value * 51000) + '원';
+          songdal_banso.innerHTML = addComma(songdal_push.value * 51000) + '원';
+          songdal_hangso.innerHTML = addComma(songdal_push.value * 61200) + '원';
+          songdal_jigup.innerHTML = addComma(songdal_push.value * 30600) + '원';
+
+          const before = document.querySelector('#before');
+
+          before.innerHTML = songdal_push.value + '명';
+          songdal_push.value = '';
+        }
+      }
+    </script>
+</body>
+</html>

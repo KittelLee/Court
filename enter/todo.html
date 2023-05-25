@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <!--문자인코딩방식 명시-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!--윈도우10이하버전 최신엔진으로 페이지 렌더링-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    <meta name="description" content="파주시법원 홈페이지 입니다." /> <!--사이트설명-->
+    <meta name="author" content="이진욱" /> <!--사이트 저작자-->
+    <title>오늘해야할일 [리스트]</title>
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../css/todo.css" />
+    <link rel="shortcut icon" href="../img/fav.ico"> 
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/toggle.min.js"></script>
+  </head>
+<body>
+  <div id="wrap">
+    <section class="info_clock"> <!--Information clock part-->
+      <h2 id="clock">00:00</h2>
+    </section>
+
+    <header class="header"> <!--Header part-->
+      <h1 class="logo">
+        <a href="../index.html"><img src="../img/court.png"></a>
+      </h1>
+      <nav class="nav">
+        <ul class="navbar">
+          <li><a href="../menu/basic.html">전화&접수가이드</a></li>
+          <li><a href="../menu/guide.html">서식접수가이드</a></li>
+          <li><a href="../menu/code.html">사건검색코드</a></li>
+          <li><a href="../menu/edu.html">자녀교육준비</a></li>
+          <li><a href="../menu/seat.html">자리배치도</a></li>
+          <li><a href="../menu/work.html">담당자 담당업무</a></li>
+        </ul>
+      </nav>
+      <span class="menu_toggle_btn">전체 메뉴 토글 버튼</span>
+    </header>
+
+    <section class="main_header_section"> <!--Main header part-->
+      <h2>오늘해야할일 [리스트]</h2>
+      <ul class="sub_list">
+        <li><a href="../menu/enter.html">뒤로가기 /</a></li>
+        <li><a href="todo.html">오늘해야할일 [리스트]</a></li>
+      </ul>
+    </section>
+
+    <section class="content_section"> <!--content part-->
+          <form class="todo-Doform">
+              <input type="text" id="todo_Enter" placeholder="오늘 할일을 적고 엔터를 누르세요">
+          </form>
+          <ul class="todo-list"></ul>
+    </section>
+
+    <footer class="footer"> <!--footer part-->
+      <p>
+        COPYRIGHT &copy; 2020 <a id="hidden" onclick="alert('개발자 이진욱이 만든 웹사이트 입니다.')">DEV JINUK</a>&nbsp;&nbsp&nbsp;ALL RIGHTS RESERVED
+      </p>
+    </footer>
+    
+  </div>
+
+  <script> /*clock*/
+    const newTime = document.getElementById("clock");
+    
+    function watch() {
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const nowdate = date.getDate();
+      const day =  date.getDay();
+      const week = ['일', '월', '화', '수', '목', '금', '토'];
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = date.getSeconds();
+           
+      newTime.innerHTML = year + "년 " + addzero(month + 1) + "월 " + addzero(nowdate) + "일 " + week[day] + "요일 " + addzero(hours) + "시 " + addzero(minutes) + "분 ";
+    }
+
+    function addzero(num) {
+      if(num < 10) {
+        num = "0" + num;
+      }
+      return num;
+    }
+
+    function init() {
+      watch();
+      setInterval(watch, 1000);
+    }
+
+    init();
+    </script>
+
+    <script> /*TO DO LIST*/
+    const toDoForm = document.querySelector(".todo-Doform"),
+          toDoInput = toDoForm.querySelector("input"),
+          toDoList =  document.querySelector(".todo-list");
+          
+    const TODOS_LS = "toDos";
+
+    let toDos = [];
+
+    function deleteToDo(event){
+        const btn = event.target; // 클릭된 버튼을 할당.
+        const li = btn.parentNode; // 그리고 그 부모 태그(li)를 할당.
+        toDoList.removeChild(li); // 해당 태그를 지움.
+        // filter 함수는 array의 모든 요소들에 함수를 실행하고, 값이 true인 것들만 가지고 새로운 array를 만들어 반환함.
+        const cleanToDos = toDos.filter(function(toDo){
+            return toDo.id !== parseInt(li.id);
+        });
+        toDos = cleanToDos;
+        saveToDos();
+    }
+
+    // to-do-list를 local storage에 저장하는 함수
+    function saveToDos(){
+        localStorage.setItem(TODOS_LS, JSON.stringify(toDos)); // JSON.stringify 함수를 사용해 자바스크립트 objectfmf string으로 바꿔준다.
+    }
+
+    function paintToDo(text){
+        const li = document.createElement("li"); // li 태그를 만들어서 변수에 할당
+        const delBtn = document.createElement("button"); // button 태그를 만들어서 변수에 할당
+        const span = document.createElement("span"); // span 태그를 만들어서 변수에 할당
+        const newId = toDos.length + 1 
+        delBtn.innerText = "❌"; // 버튼의 텍스트는 "X"로 설정
+        delBtn.addEventListener("click", deleteToDo);
+        span.innerText = text; // 사용자가 입력한 텍스트가 span태그의 텍스트가 되도록 설정
+        li.appendChild(delBtn); // li 태그의 자식 태그로 버튼을 삽입
+        li.appendChild(span); // li 태그의 자식 태그로 span 태그 삽입
+        li.id = newId; // li태그의 id 속성을 object의 id와 같게 함.
+        toDoList.appendChild(li); // 위에서 설정한 li 태그들을 최종적으로 toDoList에 삽입.
+        const toDoObj = {
+            text : text,
+            id : newId
+        };
+        toDos.push(toDoObj); // toDos라는 Array 안에 toDoObj 객체를 넣음.
+        saveToDos();
+    }
+
+    function handleSubmit(event){
+        event.preventDefault();
+        const currentValue = toDoInput.value;
+        paintToDo(currentValue);
+        toDoInput.value = ""; // 텍스트를 입력하고 엔터를 치면 사라지게 하기
+    }
+
+    function loadToDos(){
+        const  loadedToDos = localStorage.getItem(TODOS_LS); // 로컬스토리지에서 키가 TODOS_LS인 값을 가져오기
+        if (loadedToDos !== null){
+            const parsedToDos = JSON.parse(loadedToDos); // JSON을 자바스크립트가 이해할 수 있는 object 데이터 형식으로 변형
+            parsedToDos.forEach(function(toDo){
+                paintToDo(toDo.text);
+            })
+        }
+    }
+
+    function init(){
+        loadToDos();
+        toDoForm.addEventListener("submit", handleSubmit);
+    }
+
+    init();
+    </script>
+</body>
+</html>
